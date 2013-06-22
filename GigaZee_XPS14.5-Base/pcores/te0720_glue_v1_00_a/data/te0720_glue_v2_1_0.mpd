@@ -1,0 +1,43 @@
+###################################################################
+##
+## Name     : te0720_glue
+## Desc     : Microprocessor Peripheral Description
+##
+###################################################################
+
+BEGIN te0720_glue
+
+## Peripheral Options
+OPTION IPTYPE = PERIPHERAL
+OPTION IMP_NETLIST = TRUE
+OPTION HDL = VHDL
+OPTION DESC = GLUE_LOGIC
+OPTION LONG_DESC = Glue logic for TE0720
+OPTION ARCH_SUPPORT_MAP = (others=DEVELOPMENT)
+
+## Generics for VHDL or Parameters for Verilog
+## Ports
+
+## GPIO
+PORT GPIO_O = "", DIR = I, VEC = [31:0]
+PORT GPIO_I = "", DIR = O, VEC = [31:0]
+PORT GPIO_T = "", DIR = I, VEC = [31:0]
+## I2C
+PORT SCL_I = "", DIR = O
+PORT SCL_O = "", DIR = I
+PORT SCL_T = "", DIR = I
+PORT SDA_I = "", DIR = O
+PORT SDA_O = "", DIR = I
+PORT SDA_T = "", DIR = I
+# I2C - CPLD connection
+# i2c_sda_in
+PORT X5 = "", DIR = I		
+# i2c_sda_out
+PORT X7 = "", DIR = O		
+# i2c_sw
+PORT X0 = "", DIR = O		
+# i2c_scl_out
+PORT X1 = "", DIR = O		
+
+
+END

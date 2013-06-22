@@ -1,0 +1,6 @@
+the_ROM_image:
+{
+	[bootloader]/Temporary/OHV/mem_div/SDK/SDK_Workspace/FSBL/Debug/FSBL.elf
+	/Temporary/OHV/mem_div/SDK/SDK_Workspace/mem_div_hw_platform/system.bit
+	/Temporary/OHV/mem_div/u-boot.elf
+}

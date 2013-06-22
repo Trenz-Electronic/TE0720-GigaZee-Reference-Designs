@@ -1,0 +1,33 @@
+#-----------------------------------------------------------------------------
+# Copyright (C) 2013 Trenz Electronic GmbH
+#
+# Permission is hereby granted, free of charge, to any person obtaining a 
+# copy of this software and associated documentation files (the "Software"), 
+# to deal in the Software without restriction, including without limitation 
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, 
+# and/or sell copies of the Software, and to permit persons to whom the 
+# Software is furnished to do so, subject to the following conditions:
+# 
+# The above copyright notice and this permission notice shall be included 
+# in all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS 
+# OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING 
+# FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS 
+# IN THE SOFTWARE.
+#-----------------------------------------------------------------------------
+
+# Constrains for base TE0720 Project
+
+# FPGA - CPLD connections
+NET X0			LOC = R15  | IOSTANDARD = LVCMOS25;
+NET X1      	LOC = L16  | IOSTANDARD = LVCMOS25;
+#NET X2     	LOC = M15  | IOSTANDARD = LVCMOS33;
+#NET X3     	LOC = N15  | IOSTANDARD = LVCMOS33;
+#NET X4     	LOC = P16  | IOSTANDARD = LVCMOS33;
+NET X5      	LOC = P22  | IOSTANDARD = LVCMOS25;
+#NET X6     	LOC = K20  | IOSTANDARD = LVCMOS33;
+NET X7      	LOC = N22  | IOSTANDARD = LVCMOS25;

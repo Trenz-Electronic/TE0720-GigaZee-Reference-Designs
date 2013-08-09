@@ -1,0 +1,1 @@
+ -p zynq -lang vhdl$(PROJECT_SEARCHPATHOPT) $(GLOBAL_SEARCHPATHOPT) -msg __xps/ise/xmsgprops.lst -s isim -X B:/SVN/CustomerProjects/Neaspec/TE0590-DAQ-Board/current/hdl/pcie_base/cpu/cpu/

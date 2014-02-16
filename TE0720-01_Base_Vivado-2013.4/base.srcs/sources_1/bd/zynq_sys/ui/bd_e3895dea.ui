@@ -1,0 +1,71 @@
+{
+   guistr: "# # String gsaved with Nlview version 6.2.12  2013-02-15 bk=1.2829 VDI=32 GEI=33
+#  -string -flagsOSRD
+preplace port hp_aclk -pg 1 -y 140 -defaultsOSRD
+preplace port irq -pg 1 -y 280 -defaultsOSRD
+preplace port aresetn -pg 1 -y 490 -defaultsOSRD
+preplace port ctrl_aclk -pg 1 -y 220 -defaultsOSRD
+preplace port data_aclk -pg 1 -y 470 -defaultsOSRD
+preplace port s_mon -pg 1 -y 290 -defaultsOSRD
+preplace port s_ctrl -pg 1 -y 200 -defaultsOSRD
+preplace port mon_hp_axi -pg 1 -y 80 -defaultsOSRD
+preplace portBus trig_channel_reg -pg 1 -y 540 -defaultsOSRD
+preplace portBus samples_reg -pg 1 -y 520 -defaultsOSRD
+preplace portBus trig_value_reg -pg 1 -y 560 -defaultsOSRD
+preplace portBus pause_reg -pg 1 -y 500 -defaultsOSRD
+preplace inst reg_bank_mon_1 -pg 1 -lvl 4 -y 510 -defaultsOSRD
+preplace inst mon_notif_fifo -pg 1 -lvl 3 -y 280 -defaultsOSRD
+preplace inst pages_const -pg 1 -lvl 1 -y 300 -defaultsOSRD
+preplace inst axi_rb_ctrl_1 -pg 1 -lvl 4 -y 270 -defaultsOSRD
+preplace inst size_const -pg 1 -lvl 1 -y 420 -defaultsOSRD
+preplace inst sh_hp_packer_1 -pg 1 -lvl 2 -y 390 -defaultsOSRD
+preplace inst reg_update_fifo -pg 1 -lvl 3 -y 490 -defaultsOSRD
+preplace inst axis2axi_hp_1 -pg 1 -lvl 4 -y 80 -defaultsOSRD
+preplace inst mon_hp_fifo -pg 1 -lvl 3 -y 80 -defaultsOSRD
+preplace inst mon_hp_fifo -pg 1 -lvl 3 -y 80 -defaultsOSRD
+preplace netloc reg_bank_mon_1_samples_reg 1 4 1 N
+preplace netloc reg_bank_mon_1_samples_reg 1 4 1 N
+preplace netloc ctrl_aclk_1 1 0 4 N 220 250 190 550 380 930
+preplace netloc ctrl_aclk_1 1 0 4 N 220 250 190 550 380 930
+preplace netloc sh_hp_packer_1_m_ctrl 1 2 1 540
+preplace netloc sh_hp_packer_1_m_ctrl 1 2 1 540
+preplace netloc size_const_const 1 1 1 300
+preplace netloc size_const_const 1 1 1 300
+preplace netloc Conn1 1 0 2 110 350 250
+preplace netloc Conn1 1 0 2 110 350 250
+preplace netloc axis_data_fifo_1_m_axis 1 3 1 900
+preplace netloc axis_data_fifo_1_m_axis 1 3 1 900
+preplace netloc Conn2 1 4 1 N
+preplace netloc Conn2 1 4 1 N
+preplace netloc Conn3 1 0 4 110 230 260 200 560 190 930
+preplace netloc Conn3 1 0 4 110 230 260 200 560 190 930
+preplace netloc mon_notif_fifo_m_axis 1 3 1 910
+preplace netloc mon_notif_fifo_m_axis 1 3 1 910
+preplace netloc mon_hp_fifo_m_axis 1 3 1 920
+preplace netloc mon_hp_fifo_m_axis 1 3 1 920
+preplace netloc reg_bank_mon_1_pause_reg 1 4 1 N
+preplace netloc reg_bank_mon_1_pause_reg 1 4 1 N
+preplace netloc axi_rb_ctrl_1_irq 1 4 1 N
+preplace netloc axi_rb_ctrl_1_irq 1 4 1 N
+preplace netloc data_aclk_1 1 0 4 N 470 280 220 570 580 930
+preplace netloc data_aclk_1 1 0 4 N 470 280 220 570 580 930
+preplace netloc sh_hp_packer_1_m_data 1 2 1 520
+preplace netloc sh_hp_packer_1_m_data 1 2 1 520
+preplace netloc reg_bank_mon_1_trig_value_reg 1 4 1 N
+preplace netloc reg_bank_mon_1_trig_value_reg 1 4 1 N
+preplace netloc reg_bank_mon_1_address_reg 1 1 4 290 230 560 390 900 400 1220
+preplace netloc reg_bank_mon_1_address_reg 1 1 4 290 230 560 390 900 400 1220
+preplace netloc axi_rb_ctrl_1_m_axis 1 2 3 590 370 910 390 1220
+preplace netloc axi_rb_ctrl_1_m_axis 1 2 3 590 370 910 390 1220
+preplace netloc reg_bank_mon_1_trig_channel_reg 1 4 1 N
+preplace netloc reg_bank_mon_1_trig_channel_reg 1 4 1 N
+preplace netloc reg_bank_mon_1_control_reg 1 1 4 300 240 530 400 890 410 1210
+preplace netloc reg_bank_mon_1_control_reg 1 1 4 300 240 530 400 890 410 1210
+preplace netloc hp_aclk_1 1 0 4 N 140 N 140 590 170 910
+preplace netloc hp_aclk_1 1 0 4 N 140 N 140 590 170 910
+preplace netloc aresetn_1 1 0 4 N 490 270 210 580 180 920
+preplace netloc aresetn_1 1 0 4 N 490 270 210 580 180 920
+preplace netloc pages_const_const 1 1 1 260
+levelinfo -pg 1 90 180 410 740 1070 1240
+",
+}

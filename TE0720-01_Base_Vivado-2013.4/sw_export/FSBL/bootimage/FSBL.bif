@@ -1,0 +1,6 @@
+the_ROM_image:
+{
+	[bootloader]B:\GIT\TE0720-GigaZee-Reference-Designs\TE0720-Vivado2013.3\TE0720-Vivado2013.3.sdk\SDK\SDK_Export\FSBL\Debug\FSBL.elf
+	B:\GIT\TE0720-GigaZee-Reference-Designs\TE0720-Vivado2013.3\TE0720-Vivado2013.3.sdk\SDK\SDK_Export\hw_platform_0\system.bit
+	B:\GIT\TE0720-GigaZee-Reference-Designs\TE0720-Vivado2013.3\u-boot.elf
+}

@@ -1,0 +1,57 @@
+{
+   guistr: "# # String gsaved with Nlview version 6.2.12  2013-02-15 bk=1.2829 VDI=32 GEI=33
+#  -string -flagsOSRD
+preplace port S_AXI_LITE -pg 1 -y 240 -defaultsOSRD
+preplace port hdmi_clk -pg 1 -y 200 -defaultsOSRD
+preplace port resetn -pg 1 -y 260 -defaultsOSRD
+preplace port vdma_int -pg 1 -y 360 -defaultsOSRD
+preplace port hdmi_hsync -pg 1 -y 240 -defaultsOSRD
+preplace port S_AXI -pg 1 -y 160 -defaultsOSRD
+preplace port hdmi_vsync -pg 1 -y 220 -defaultsOSRD
+preplace port hdmi_data_e -pg 1 -y 260 -defaultsOSRD
+preplace port S_AXI_ACLK -pg 1 -y 80 -defaultsOSRD
+preplace port hp_clk -pg 1 -y 60 -defaultsOSRD
+preplace port M_HP_AXI -pg 1 -y 60 -defaultsOSRD
+preplace port S_AXI1 -pg 1 -y 40 -defaultsOSRD
+preplace portBus hdmi_data -pg 1 -y 280 -defaultsOSRD
+preplace inst axi_protocol_converter_1 -pg 1 -lvl 2 -y 60 -defaultsOSRD
+preplace inst axi_clkgen_2 -pg 1 -lvl 1 -y 70 -defaultsOSRD
+preplace inst axi_vdma_1 -pg 1 -lvl 1 -y 300 -defaultsOSRD
+preplace inst axi_hdmi_tx12b_2 -pg 1 -lvl 2 -y 250 -defaultsOSRD
+preplace inst axi_hdmi_tx12b_2 -pg 1 -lvl 2 -y 250 -defaultsOSRD
+preplace netloc processing_system7_1_fclk_reset0_n 1 0 2 140 160 550
+preplace netloc processing_system7_1_fclk_reset0_n 1 0 2 140 160 550
+preplace netloc processing_system7_1_fclk_clk0 1 0 2 150 180 540
+preplace netloc processing_system7_1_fclk_clk0 1 0 2 150 180 540
+preplace netloc processing_system7_1_fclk_clk1 1 0 2 160 150 580
+preplace netloc processing_system7_1_fclk_clk1 1 0 2 160 150 580
+preplace netloc s_axi1_1 1 0 1 N
+preplace netloc s_axi1_1 1 0 1 N
+preplace netloc Conn1 1 2 1 N
+preplace netloc Conn1 1 2 1 N
+preplace netloc axi_vdma_1_m_axi_mm2s 1 1 1 530
+preplace netloc axi_vdma_1_m_axi_mm2s 1 1 1 530
+preplace netloc axi_vdma_1_mm2s_introut 1 1 2 560 370 890
+preplace netloc axi_vdma_1_mm2s_introut 1 1 2 560 370 890
+preplace netloc axi_clkgen_2_clk 1 1 1 570
+preplace netloc axi_clkgen_2_clk 1 1 1 570
+preplace netloc axi_vdma_1_m_axis_mm2s 1 1 1 560
+preplace netloc axi_vdma_1_m_axis_mm2s 1 1 1 560
+preplace netloc s_axi_1 1 0 2 130 170 560
+preplace netloc s_axi_1 1 0 2 130 170 560
+preplace netloc axi_hdmi_tx12b_2_vdma_fs 1 0 3 170 190 590 130 890
+preplace netloc axi_hdmi_tx12b_2_vdma_fs 1 0 3 170 190 590 130 890
+preplace netloc axi_hdmi_tx12b_2_hdmi_clk 1 2 1 N
+preplace netloc axi_hdmi_tx12b_2_hdmi_clk 1 2 1 N
+preplace netloc axi_interconnect_1_m04_axi 1 0 1 N
+preplace netloc axi_interconnect_1_m04_axi 1 0 1 N
+preplace netloc axi_hdmi_tx12b_2_hdmi_hsync 1 2 1 N
+preplace netloc axi_hdmi_tx12b_2_hdmi_hsync 1 2 1 N
+preplace netloc axi_hdmi_tx12b_2_hdmi_data 1 2 1 N
+preplace netloc axi_hdmi_tx12b_2_hdmi_data 1 2 1 N
+preplace netloc axi_hdmi_tx12b_2_hdmi_data_e 1 2 1 N
+preplace netloc axi_hdmi_tx12b_2_hdmi_data_e 1 2 1 N
+preplace netloc axi_hdmi_tx12b_2_hdmi_vsync 1 2 1 N
+levelinfo -pg 1 110 350 740 910
+",
+}

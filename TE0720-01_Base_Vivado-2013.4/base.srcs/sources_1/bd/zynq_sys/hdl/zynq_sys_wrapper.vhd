@@ -41,12 +41,6 @@ end zynq_sys_wrapper;
 architecture STRUCTURE of zynq_sys_wrapper is
   component zynq_sys is
   port (
-    FIXED_IO_mio : inout STD_LOGIC_VECTOR ( 53 downto 0 );
-    FIXED_IO_ddr_vrn : inout STD_LOGIC;
-    FIXED_IO_ddr_vrp : inout STD_LOGIC;
-    FIXED_IO_ps_srstb : inout STD_LOGIC;
-    FIXED_IO_ps_clk : inout STD_LOGIC;
-    FIXED_IO_ps_porb : inout STD_LOGIC;
     DDR_cas_n : inout STD_LOGIC;
     DDR_cke : inout STD_LOGIC;
     DDR_ck_n : inout STD_LOGIC;
@@ -62,22 +56,28 @@ architecture STRUCTURE of zynq_sys_wrapper is
     DDR_dq : inout STD_LOGIC_VECTOR ( 31 downto 0 );
     DDR_dqs_n : inout STD_LOGIC_VECTOR ( 3 downto 0 );
     DDR_dqs_p : inout STD_LOGIC_VECTOR ( 3 downto 0 );
+    FIXED_IO_mio : inout STD_LOGIC_VECTOR ( 53 downto 0 );
+    FIXED_IO_ddr_vrn : inout STD_LOGIC;
+    FIXED_IO_ddr_vrp : inout STD_LOGIC;
+    FIXED_IO_ps_srstb : inout STD_LOGIC;
+    FIXED_IO_ps_clk : inout STD_LOGIC;
+    FIXED_IO_ps_porb : inout STD_LOGIC;
     IIC_0_sda_i : in STD_LOGIC;
     IIC_0_sda_o : out STD_LOGIC;
     IIC_0_sda_t : out STD_LOGIC;
     IIC_0_scl_i : in STD_LOGIC;
     IIC_0_scl_o : out STD_LOGIC;
     IIC_0_scl_t : out STD_LOGIC;
-    clk_100mhz : out STD_LOGIC;
-    resetn : out STD_LOGIC;
-    clk_200mhz : out STD_LOGIC;
+    GPIO_O : out STD_LOGIC_VECTOR ( 31 downto 0 );
     I2C1_SDA_I : in STD_LOGIC;
     I2C1_SDA_O : out STD_LOGIC;
     I2C1_SDA_T : out STD_LOGIC;
     I2C1_SCL_I : in STD_LOGIC;
     I2C1_SCL_O : out STD_LOGIC;
     I2C1_SCL_T : out STD_LOGIC;
-    GPIO_O : out STD_LOGIC_VECTOR ( 31 downto 0 )
+    resetn : out STD_LOGIC;
+    clk_100mhz : out STD_LOGIC;
+    clk_200mhz : out STD_LOGIC
   );
   end component zynq_sys;
   component IOBUF is

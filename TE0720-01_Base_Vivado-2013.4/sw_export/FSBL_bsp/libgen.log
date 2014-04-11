@@ -5,42 +5,27 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 Command Line: libgen -hw ../hw_platform_0/system.xml -pe ps7_cortexa9_0 -log
 libgen.log system.mss 
 
-WARNING:EDK - devcfg -
-   B:\Temporary\TE0720-01_Base_Vivado-2013.4\video.sdk\SDK\SDK_Export\FSBL_bsp\s
-   ystem.mss line 57 - deprecated driver!
 WARNING:EDK - dmaps -
-   B:\Temporary\TE0720-01_Base_Vivado-2013.4\video.sdk\SDK\SDK_Export\FSBL_bsp\s
-   ystem.mss line 63 - deprecated driver!
+   B:\GIT\TE0720-GigaZee-Reference-Designs\TE0720-01_Base_Vivado-2013.4_src\base
+   .sdk\SDK\SDK_Export\FSBL_bsp\system.mss line 69 - deprecated driver!
 WARNING:EDK - dmaps -
-   B:\Temporary\TE0720-01_Base_Vivado-2013.4\video.sdk\SDK\SDK_Export\FSBL_bsp\s
-   ystem.mss line 69 - deprecated driver!
+   B:\GIT\TE0720-GigaZee-Reference-Designs\TE0720-01_Base_Vivado-2013.4_src\base
+   .sdk\SDK\SDK_Export\FSBL_bsp\system.mss line 75 - deprecated driver!
 WARNING:EDK - emacps -
-   B:\Temporary\TE0720-01_Base_Vivado-2013.4\video.sdk\SDK\SDK_Export\FSBL_bsp\s
-   ystem.mss line 75 - deprecated driver!
-WARNING:EDK - gpiops -
-   B:\Temporary\TE0720-01_Base_Vivado-2013.4\video.sdk\SDK\SDK_Export\FSBL_bsp\s
-   ystem.mss line 81 - deprecated driver!
-WARNING:EDK - iicps -
-   B:\Temporary\TE0720-01_Base_Vivado-2013.4\video.sdk\SDK\SDK_Export\FSBL_bsp\s
-   ystem.mss line 87 - deprecated driver!
-WARNING:EDK - iicps -
-   B:\Temporary\TE0720-01_Base_Vivado-2013.4\video.sdk\SDK\SDK_Export\FSBL_bsp\s
-   ystem.mss line 93 - deprecated driver!
-WARNING:EDK - qspips -
-   B:\Temporary\TE0720-01_Base_Vivado-2013.4\video.sdk\SDK\SDK_Export\FSBL_bsp\s
-   ystem.mss line 105 - deprecated driver!
+   B:\GIT\TE0720-GigaZee-Reference-Designs\TE0720-01_Base_Vivado-2013.4_src\base
+   .sdk\SDK\SDK_Export\FSBL_bsp\system.mss line 81 - deprecated driver!
 WARNING:EDK - scugic -
-   B:\Temporary\TE0720-01_Base_Vivado-2013.4\video.sdk\SDK\SDK_Export\FSBL_bsp\s
-   ystem.mss line 129 - deprecated driver!
-WARNING:EDK - uartps -
-   B:\Temporary\TE0720-01_Base_Vivado-2013.4\video.sdk\SDK\SDK_Export\FSBL_bsp\s
-   ystem.mss line 171 - deprecated driver!
+   B:\GIT\TE0720-GigaZee-Reference-Designs\TE0720-01_Base_Vivado-2013.4_src\base
+   .sdk\SDK\SDK_Export\FSBL_bsp\system.mss line 171 - deprecated driver!
 WARNING:EDK - usbps -
-   B:\Temporary\TE0720-01_Base_Vivado-2013.4\video.sdk\SDK\SDK_Export\FSBL_bsp\s
-   ystem.mss line 177 - deprecated driver!
+   B:\GIT\TE0720-GigaZee-Reference-Designs\TE0720-01_Base_Vivado-2013.4_src\base
+   .sdk\SDK\SDK_Export\FSBL_bsp\system.mss line 219 - deprecated driver!
+WARNING:EDK - xadcps -
+   B:\GIT\TE0720-GigaZee-Reference-Designs\TE0720-01_Base_Vivado-2013.4_src\base
+   .sdk\SDK\SDK_Export\FSBL_bsp\system.mss line 225 - deprecated driver!
 WARNING:EDK - standalone -
-   B:\Temporary\TE0720-01_Base_Vivado-2013.4\video.sdk\SDK\SDK_Export\FSBL_bsp\s
-   ystem.mss line 5 - deprecated os!
+   B:\GIT\TE0720-GigaZee-Reference-Designs\TE0720-01_Base_Vivado-2013.4_src\base
+   .sdk\SDK\SDK_Export\FSBL_bsp\system.mss line 5 - deprecated os!
 
 Staging source files.
 Running DRCs.

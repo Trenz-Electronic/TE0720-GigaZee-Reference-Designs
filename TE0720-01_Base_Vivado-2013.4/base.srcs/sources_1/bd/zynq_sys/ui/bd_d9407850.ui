@@ -2,33 +2,37 @@
    guistr: "# # String gsaved with Nlview version 6.3.3  2013-08-16 bk=1.2871 VDI=33 GEI=35
 #  -string -flagsOSRD
 preplace port DDR -pg 1 -y 130 -defaultsOSRD
-preplace port clk_200mhz -pg 1 -y 450 -defaultsOSRD
+preplace port clk_200mhz -pg 1 -y 530 -defaultsOSRD
 preplace port I2C1_SCL_O -pg 1 -y 290 -defaultsOSRD
 preplace port I2C1_SDA_T -pg 1 -y 250 -defaultsOSRD
+preplace port resetn -pg 1 -y 550 -defaultsOSRD
 preplace port I2C1_SDA_I -pg 1 -y 20 -defaultsOSRD
-preplace port resetn -pg 1 -y 470 -defaultsOSRD
+preplace port clk_100mhz -pg 1 -y 510 -defaultsOSRD
 preplace port I2C1_SCL_T -pg 1 -y 310 -defaultsOSRD
-preplace port clk_100mhz -pg 1 -y 430 -defaultsOSRD
 preplace port IIC_0 -pg 1 -y 170 -defaultsOSRD
 preplace port FIXED_IO -pg 1 -y 150 -defaultsOSRD
 preplace port I2C1_SCL_I -pg 1 -y 40 -defaultsOSRD
 preplace port I2C1_SDA_O -pg 1 -y 230 -defaultsOSRD
 preplace portBus GPIO_O -pg 1 -y 110 -defaultsOSRD
-preplace inst processing_system7_1 -pg 1 -lvl 1 -y 280 -defaultsOSRD
-preplace netloc processing_system7_1_ddr 1 1 1 N
-preplace netloc processing_system7_1_fclk_clk0 1 0 2 130 530 520
-preplace netloc processing_system7_1_I2C1_SCL_T 1 1 1 N
-preplace netloc I2C1_SCL_I_1 1 0 2 NJ 40 510
-preplace netloc processing_system7_1_FCLK_CLK1 1 1 1 N
-preplace netloc processing_system7_1_I2C1_SDA_O 1 1 1 N
-preplace netloc processing_system7_1_fixed_io 1 1 1 N
-preplace netloc processing_system7_1_GPIO_O 1 1 1 N
-preplace netloc processing_system7_1_fclk_reset0_n 1 1 1 N
-preplace netloc processing_system7_1_IIC_0 1 1 1 N
-preplace netloc processing_system7_1_I2C1_SCL_O 1 1 1 N
-preplace netloc processing_system7_1_I2C1_SDA_T 1 1 1 N
-preplace netloc I2C1_SDA_I_1 1 0 2 NJ 20 520
+preplace inst net_gnd -pg 1 -lvl 1 -y 640 -defaultsOSRD
+preplace inst processing_system7_0 -pg 1 -lvl 1 -y 320 -defaultsOSRD
+preplace netloc processing_system7_0_ddr 1 1 1 NJ
+preplace netloc processing_system7_0_i2c1_scl_o 1 1 1 NJ
+preplace netloc net_gnd_const 1 1 1 510
+preplace netloc i2c1_scl_i_1 1 0 2 NJ 40 510
+preplace netloc processing_system7_0_i2c1_sda_t 1 1 1 NJ
+preplace netloc i2c1_sda_i_1 1 0 2 NJ 20 520
+preplace netloc processing_system7_0_iic_0 1 1 1 NJ
+preplace netloc processing_system7_0_gpio_o 1 1 1 NJ
+preplace netloc processing_system7_0_i2c1_scl_t 1 1 1 NJ
+preplace netloc processing_system7_0_fclk_reset0_n 1 1 1 NJ
+preplace netloc processing_system7_0_fixed_io 1 1 1 NJ
+preplace netloc processing_system7_0_fclk_clk0 1 0 2 130 700 520
+preplace netloc processing_system7_0_fclk_clk1 1 1 1 NJ
+preplace netloc processing_system7_0_i2c1_sda_o 1 1 1 NJ
 levelinfo -pg 1 110 320 540
 ",
 }
-0
+{
+   da_ps7_cnt: "1",
+}

@@ -61,18 +61,41 @@
 * 				Added clearing of ECC Error Code
 * 				Added the watchdog timer value
 * 4.00a sgd 02/28/13	Code Cleanup
-* 						Fix for CR#681014
-* 						Fix for CR#689077
-*						Fix for CR#694038
-*						Fix for CR#694039
-*                       Fix for CR#699475
+* 						Fix for CR#681014 - ECC init in FSBL should not
+* 						                    call fabric_init()
+* 						Fix for CR#689077 - FSBL hangs at Handoff clearing the
+* 						                    TX UART buffer when using UART0
+* 						                    instead of UART1
+*						Fix for CR#694038 - FSBL debug logs always prints 14.3
+*											as the Revision number - this is
+*										    incorrect
+*						Fix for CR#694039 - FSBL prints "unsupported silicon
+*											version for v3.0" 3.0 Silicon
+*                       Fix for CR#699475 - FSBL functionality is broken and
+*                                           its not able to boot in QSPI/NAND
+*                                           bootmode
 *                       Removed DDR initialization check
 *                       Removed DDR ECC initialization code
 *						Modified hand off address check to 1MB
 *						Added RSA authentication support
 *						Watchdog disabled for AES E-Fuse encryption
 * 5.00a sgd 05/17/13	Fallback support for E-Fuse encryption
-*                       Fix for CR#708728
+*                       Fix for CR#708728 - Issues seen while making HP
+*                                           interconnect 32 bit wide
+* 6.00a kc  07/30/13    Fix for CR#708316 - PS7_init.tcl file should have
+*                                           Error mechanism for all mask_poll
+*                       Fix for CR#691150 - ps7_init does not check for
+*                                           peripheral initialization failures
+*                                           or timeout on polls
+*                       Fix for CR#724165 - Partition Header used by FSBL is
+*                                           not authenticated
+*                       Fix for CR#724166 - FSBL doesn’t use PPK authenticated
+*                                           by Boot ROM for authenticating
+*                                           the Partition images
+*                       Fix for CR#722979 - Provide customer-friendly
+*                                           changelogs in FSBL
+*                       Fix for CR#732865 - Backward compatibility for ps7_init
+*                       					function
 * </pre>
 *
 * @note
@@ -130,6 +153,7 @@ XWdtPs Watchdog;		/* Instance of WatchDog Timer	*/
 #endif
 /************************** Function Prototypes ******************************/
 extern int ps7_init();
+extern char* getPS7MessageInfo(unsigned key);
 #ifdef PS7_POST_CONFIG
 extern int ps7_post_config();
 #endif
@@ -213,20 +237,23 @@ int main(void)
 	/*
 	 * PCW initialization for MIO,PLL,CLK and DDR
 	 */
-	ps7_init();
+	Status = ps7_init();
+	if (Status != FSBL_PS7_INIT_SUCCESS) {
+		fsbl_printf(DEBUG_GENERAL,"PS7_INIT_FAIL : %s\r\n",
+						getPS7MessageInfo(Status));
+		OutputStatus(PS7_INIT_FAIL);
+		/*
+		 * Calling FsblHookFallback instead of Fallback
+		 * since, devcfg driver is not yet initialized
+		 */
+		FsblHookFallback();
+	}
 #endif
 
 	/*
 	 * Unlock SLCR for SLCR register write
 	 */
 	SlcrUnlock();
-	*((u32 *)0xF8000830) = 0x003F003F;	// SD0 CD and WP to EMIO63
-	*((u32 *)0xF8000834) = 0x003F003F;	// SD1 CD and WP to EMIO63
-	*((u32 *)0xF8007080) = 0x00000000;	// Allow FPGA load from u-boot and Linux
-
-	*((u32 *)0xE000B000) = 0x00000010;	// Network control
-	*((u32 *)0xE000B004) = 0x00100000;	// Network Configuration
-	*((u32 *)0xE000B034) = 0x5D1E0000;	// PHY Maintenance
 
 	/* If Performance measurement is required 
 	 * then read the Global Timer value , Please note that the
@@ -273,7 +300,11 @@ int main(void)
 		fsbl_printf(DEBUG_GENERAL,"DDR_INIT_FAIL \r\n");
 		/* Error Handling here */
 		OutputStatus(DDR_INIT_FAIL);
-		FsblFallback();
+		/*
+		 * Calling FsblHookFallback instead of Fallback
+		 * since, devcfg driver is not yet initialized
+		 */
+		FsblHookFallback();
 	}
 
 
@@ -284,7 +315,11 @@ int main(void)
 	if (Status == XST_FAILURE) {
 		fsbl_printf(DEBUG_GENERAL,"PCAP_INIT_FAIL \n\r");
 		OutputStatus(PCAP_INIT_FAIL);
-		FsblFallback();
+		/*
+		 * Calling FsblHookFallback instead of Fallback
+		 * since, devcfg driver is not yet initialized
+		 */
+		FsblHookFallback();
 	}
 
 	fsbl_printf(DEBUG_INFO,"Devcfg driver initialized \r\n");
@@ -560,13 +595,20 @@ void FsblFallback(void)
 	u32 RebootStatusReg;
 	u32 Status;
 	u32 HandoffAddr;
+	u32 BootModeRegister;
+
+	/*
+	 * Read bootmode register
+	 */
+	BootModeRegister = Xil_In32(BOOT_MODE_REG);
+	BootModeRegister &= BOOT_MODES_MASK;
 
 	/*
 	 * Fallback support check
 	 */
-	if (!((FlashReadBaseAddress == XPS_QSPI_LINEAR_BASEADDR) ||
-			(FlashReadBaseAddress == XPS_NAND_BASEADDR) ||
-			(FlashReadBaseAddress == XPS_NOR_BASEADDR))) {
+	if (!((BootModeRegister == QSPI_MODE) ||
+			(BootModeRegister == NAND_FLASH_MODE) ||
+			(BootModeRegister == NOR_FLASH_MODE))) {
 		fsbl_printf(DEBUG_INFO,"\r\n"
 				"This Boot Mode Doesn't Support Fallback\r\n");
 		ClearFSBLIn();

@@ -176,7 +176,8 @@ void sha2_finish(sha2_context *ctx, unsigned char* output);
  */
 void modular_ext(const unsigned char *modular, unsigned char *res);
 
-u32 AuthenticateParition(u8 *Buffer, u32 Size);
+void SetPpk(void );
+u32 AuthenticatePartition(u8 *Buffer, u32 Size);
 u32 RecreatePaddingAndCheck(u8 *signature, u8 *hash);
 
 #ifdef __cplusplus

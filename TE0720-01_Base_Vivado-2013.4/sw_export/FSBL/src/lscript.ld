@@ -9,6 +9,8 @@
 _STACK_SIZE = DEFINED(_STACK_SIZE) ? _STACK_SIZE : 0x6000;
 _HEAP_SIZE = DEFINED(_HEAP_SIZE) ? _HEAP_SIZE : 0x2000;
 
+_RSA_AC_SIZE = DEFINED(_RSA_AC_SIZE) ? _RSA_AC_SIZE : 0x1000;
+
 _ABORT_STACK_SIZE = DEFINED(_ABORT_STACK_SIZE) ? _ABORT_STACK_SIZE : 1024;
 _SUPERVISOR_STACK_SIZE = DEFINED(_SUPERVISOR_STACK_SIZE) ? _SUPERVISOR_STACK_SIZE : 2048;
 _FIQ_STACK_SIZE = DEFINED(_FIQ_STACK_SIZE) ? _FIQ_STACK_SIZE : 1024;
@@ -180,6 +182,13 @@ SECTIONS
    KEEP (*(SORT(.fini_array.*)))
    KEEP (*(.fini_array))
    __fini_array_end = .;
+} > ps7_ram_0_S_AXI_BASEADDR
+
+.rsa_ac : {
+	. = ALIGN(64);
+	__rsa_ac_start = .;
+	. += _RSA_AC_SIZE;
+	__rsa_ac_end = .;
 } > ps7_ram_0_S_AXI_BASEADDR
 
 .ARM.attributes : {

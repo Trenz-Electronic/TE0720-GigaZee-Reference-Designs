@@ -35,7 +35,7 @@ all: FSBL.elf secondary-outputs
 FSBL.elf: $(OBJS) ../src/lscript.ld $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: ARM gcc linker'
-	arm-xilinx-eabi-gcc -L"B:\Temporary\TE0720-01_Base_Vivado-2013.4\video.sdk\SDK\SDK_Export\FSBL\src" -Wl,-T -Wl,../src/lscript.ld -L../../FSBL_bsp/ps7_cortexa9_0/lib -o "FSBL.elf" $(OBJS) $(USER_OBJS) $(LIBS)
+	arm-xilinx-eabi-gcc -L"B:\GIT\TE0720-GigaZee-Reference-Designs\TE0720-01_Base_Vivado-2013.4\base.sdk\SDK\SDK_Export\FSBL\src" -Wl,-T -Wl,../src/lscript.ld -L../../FSBL_bsp/ps7_cortexa9_0/lib -o "FSBL.elf" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 

@@ -53,7 +53,7 @@
 * ----- ---- -------- -------------------------------------------------------
 * 1.00a jz	03/04/11	Initial release
 * 2.00a jz	06/04/11	partition header expands to 12 words
-*
+* 5.00a kc	07/30/13	Added defines for image header information
 * </pre>
 *
 * @note
@@ -72,10 +72,19 @@ extern "C" {
 
 /************************** Constant Definitions *****************************/
 #define PARTITION_NUMBER_SHIFT	24
-#define MAX_PARTITION_NUMBER	0xE
+#define MAX_PARTITION_NUMBER	(0xE)
 
 /* Boot Image Header defines */
-#define IMAGE_PHDR_OFFSET				0x09C	/* Start of partition headers */
+#define IMAGE_HDR_OFFSET			0x098	/* Start of image header table */
+#define IMAGE_PHDR_OFFSET			0x09C	/* Start of partition headers */
+#define IMAGE_HEADER_SIZE			(64)
+#define IMAGE_HEADER_TABLE_SIZE		(64)
+#define TOTAL_PARTITION_HEADER_SIZE	(MAX_PARTITION_NUMBER * IMAGE_HEADER_SIZE)
+#define TOTAL_IMAGE_HEADER_SIZE		(MAX_PARTITION_NUMBER * IMAGE_HEADER_SIZE)
+#define TOTAL_HEADER_SIZE			(IMAGE_HEADER_TABLE_SIZE + \
+									 TOTAL_IMAGE_HEADER_SIZE + \
+									 TOTAL_PARTITION_HEADER_SIZE + 64)
+
 /* Partition Header defines */
 #define PARTITION_IMAGE_WORD_LEN_OFFSET	0x00	/* Word length of image */
 #define PARTITION_DATA_WORD_LEN_OFFSET	0x04	/* Word length of data */
@@ -133,6 +142,8 @@ u32 GetPartitionHeaderInfo(u32 ImageBaseAddress);
 u32 PartitionMove(u32 ImageBaseAddress, PartHeader *Header);
 u32 ValidatePartitionHeaderChecksum(struct HeaderArray *H);
 u32 GetPartitionHeaderStartAddr(u32 ImageAddress, u32 *Offset);
+u32 GetImageHeaderAndSignature(u32 ImageAddress, u32 *Offset);
+u32 GetFsblLength(u32 ImageAddress, u32 *FsblLength);
 u32 LoadPartitionsHeaderInfo(u32 PartHeaderOffset,  PartHeader *Header);
 u32 IsEmptyHeader(struct HeaderArray *H);
 u32 IsLastPartition(struct HeaderArray *H);

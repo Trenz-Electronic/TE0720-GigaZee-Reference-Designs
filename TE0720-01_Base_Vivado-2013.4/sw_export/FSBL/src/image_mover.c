@@ -62,6 +62,9 @@
 *						Fix for CR#695578
 *
 * 4.00a sgd	04/23/13	Fix for CR#710128
+* 5.00a kc	07/30/13	Fix for CR#724165
+* 						Fix for CR#724166
+* 						Fix for CR#732062
 *
 * </pre>
 *
@@ -121,6 +124,7 @@ ImageMoverType MoveImage;
  */
 PartHeader PartitionHeader[MAX_PARTITION_NUMBER];
 u32 PartitionCount;
+u32 FsblLength;
 
 #ifdef XPAR_XWDTPS_0_BASEADDR
 extern XWdtPs Watchdog;	/* Instance of WatchDog Timer	*/
@@ -162,7 +166,10 @@ u32 LoadBootImage(void)
 	u8 ExecAddrFlag = 0 ;
 	u32 Status;
 	PartHeader *HeaderPtr;
-
+	u32 EfuseStatusRegValue;
+#ifdef RSA_SUPPORT
+	u32 HeaderSize;
+#endif
 	/*
 	 * Resetting the Flags
 	 */
@@ -216,6 +223,55 @@ u32 LoadBootImage(void)
 		fsbl_printf(DEBUG_GENERAL, "Partition Header Load Failed\r\n");
 		OutputStatus(GET_HEADER_INFO_FAIL);
 		FsblFallback();
+	}
+
+	/*
+	 * RSA is not implemented in 1.0 and 2.0
+	 * silicon
+	 */
+	if ((Silicon_Version != SILICON_VERSION_1) &&
+			(Silicon_Version != SILICON_VERSION_2)) {
+		/*
+		 * Read Efuse Status Register
+		 */
+		EfuseStatusRegValue = Xil_In32(EFUSE_STATUS_REG);
+		if (EfuseStatusRegValue & EFUSE_STATUS_RSA_ENABLE_MASK) {
+			fsbl_printf(DEBUG_GENERAL,"RSA enabled for Chip\r\n");
+#ifdef RSA_SUPPORT
+			/*
+			 * Set the Ppk
+			 */
+			SetPpk();
+
+			/*
+			 * Read partition header with signature
+			 */
+			Status = GetImageHeaderAndSignature(ImageStartAddress,
+					(u32 *)DDR_TEMP_START_ADDR);
+			if (Status != XST_SUCCESS) {
+				fsbl_printf(DEBUG_GENERAL,
+						"Read Partition Header signature Failed\r\n");
+				OutputStatus(GET_HEADER_INFO_FAIL);
+				FsblFallback();
+			}
+			HeaderSize=TOTAL_HEADER_SIZE+RSA_SIGNATURE_SIZE;
+
+			Status = AuthenticatePartition((u8 *)DDR_TEMP_START_ADDR, HeaderSize);
+			if (Status != XST_SUCCESS) {
+				fsbl_printf(DEBUG_GENERAL,
+						"Partition Header signature Failed\r\n");
+				OutputStatus(GET_HEADER_INFO_FAIL);
+				FsblFallback();
+			}
+#else
+			/*
+			 * In case user not enabled RSA authentication feature
+			 */
+			fsbl_printf(DEBUG_GENERAL,"RSA_SUPPORT_NOT_ENABLED_FAIL\r\n");
+			OutputStatus(RSA_SUPPORT_NOT_ENABLED_FAIL);
+			FsblFallback();
+#endif
+		}
 	}
 
 #ifdef MMC_SUPPORT
@@ -272,9 +328,11 @@ u32 LoadBootImage(void)
 			PSPartitionFlag = 0;
 			BitstreamFlag = 1;
 			if (ApplicationFlag == 1) {
+#ifdef STDOUT_BASEADDRESS
 				xil_printf("\r\nFSBL Warning !!!"
 						"Bitstream not loaded into PL\r\n");
-                xil_printf("Partition order invalid\r\n");                   
+                xil_printf("Partition order invalid\r\n");
+#endif
 				break;
 			}
 		}
@@ -403,7 +461,7 @@ u32 LoadBootImage(void)
 			 */
 			if (SignedPartitionFlag == 1 ) {
 #ifdef RSA_SUPPORT
-				Status = AuthenticateParition((u8*)PartitionStartAddr,
+				Status = AuthenticatePartition((u8*)PartitionStartAddr,
 						(PartitionTotalSize << WORD_LENGTH_SHIFT));
 				if (Status != XST_SUCCESS) {
 					fsbl_printf(DEBUG_GENERAL,"AUTHENTICATION_FAIL\r\n");
@@ -491,6 +549,16 @@ u32 GetPartitionHeaderInfo(u32 ImageBaseAddress)
     u32 PartitionHeaderOffset;
     u32 Status;
 
+
+    /*
+     * Get the length of the FSBL from BootHeader
+     */
+    Status = GetFsblLength(ImageBaseAddress, &FsblLength);
+    if (Status != XST_SUCCESS) {
+    	fsbl_printf(DEBUG_GENERAL, "Get Header Start Address Failed\r\n");
+    	return XST_FAILURE;
+    }
+
     /*
     * Get the start address of the partition header table
     */
@@ -570,6 +638,104 @@ u32 GetPartitionHeaderStartAddr(u32 ImageAddress, u32 *Offset)
 	return XST_SUCCESS;
 }
 
+/*****************************************************************************/
+/**
+*
+* This function goes to the partition header of the specified partition
+*
+* @param	ImageAddress is the start address of the image
+*
+* @return	Offset to Image header table address of the image
+*
+* @return	- XST_SUCCESS if Get Partition Header start address successful
+* 			- XST_FAILURE if Get Partition Header start address failed
+*
+* @note		None
+*
+****************************************************************************/
+u32 GetImageHeaderStartAddr(u32 ImageAddress, u32 *Offset)
+{
+	u32 Status;
+
+	Status = MoveImage(ImageAddress + IMAGE_HDR_OFFSET, (u32)Offset, 4);
+	if (Status != XST_SUCCESS) {
+		fsbl_printf(DEBUG_GENERAL,"Move Image failed\r\n");
+		return XST_FAILURE;
+	}
+
+	return XST_SUCCESS;
+}
+/*****************************************************************************/
+/**
+*
+* This function gets the length of the FSBL
+*
+* @param	ImageAddress is the start address of the image
+*
+* @return	FsblLength is the length of the fsbl
+*
+* @return	- XST_SUCCESS if fsbl length reading is successful
+* 			- XST_FAILURE if fsbl length reading failed
+*
+* @note		None
+*
+****************************************************************************/
+u32 GetFsblLength(u32 ImageAddress, u32 *FsblLength)
+{
+	u32 Status;
+
+	Status = MoveImage(ImageAddress + IMAGE_TOT_BYTE_LEN_OFFSET,
+							(u32)FsblLength, 4);
+	if (Status != XST_SUCCESS) {
+		fsbl_printf(DEBUG_GENERAL,"Move Image failed reading FsblLength\r\n");
+		return XST_FAILURE;
+	}
+
+	return XST_SUCCESS;
+}
+
+#ifdef RSA_SUPPORT
+/*****************************************************************************/
+/**
+*
+* This function goes to read the image headers and its signature. Image
+* header consists of image header table, image headers, partition
+* headers
+*
+* @param	ImageBaseAddress is the start address of the image header
+*
+* @return	Offset Partition header address of the image
+*
+* @return	- XST_SUCCESS if Get Partition Header start address successful
+* 			- XST_FAILURE if Get Partition Header start address failed
+*
+* @note		None
+*
+****************************************************************************/
+u32 GetImageHeaderAndSignature(u32 ImageBaseAddress, u32 *Offset)
+{
+	u32 Status;
+	u32 ImageHeaderOffset;
+
+	/*
+	 * Get the start address of the partition header table
+	 */
+	Status = GetImageHeaderStartAddr(ImageBaseAddress, &ImageHeaderOffset);
+	if (Status != XST_SUCCESS) {
+		fsbl_printf(DEBUG_GENERAL, "Get Header Start Address Failed\r\n");
+		return XST_FAILURE;
+	}
+
+	Status = MoveImage(ImageBaseAddress+ImageHeaderOffset, (u32)Offset,
+							TOTAL_HEADER_SIZE + RSA_SIGNATURE_SIZE);
+	if (Status != XST_SUCCESS) {
+		fsbl_printf(DEBUG_GENERAL,"Move Image failed\r\n");
+		return XST_FAILURE;
+	}
+
+	return XST_SUCCESS;
+}
+#endif
 /*****************************************************************************/
 /**
 *

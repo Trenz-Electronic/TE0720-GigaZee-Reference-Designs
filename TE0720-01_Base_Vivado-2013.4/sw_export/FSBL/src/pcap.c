@@ -57,11 +57,19 @@
 * 3.00a mb  16/08/12	Added the poll function
 *						Removed the FPGA_RST_CTRL define
 *						Added the flag for NON PS instantiated bitstream
-* 4.00a sgd 02/28/13	Fix for CR#681014
-* 						Fix for CR#689026
-* 						Fix for CR#699475
-*						Removed check for Fabric is already initialized
-*						Fix for CR#705664
+* 4.00a sgd 02/28/13	Fix for CR#681014 - ECC init in FSBL should not call
+*                                           fabric_init()
+* 						Fix for CR#689026 - FSBL doesn't hold PL resets active
+* 						                    during bit download
+* 						Fix for CR#699475 - FSBL functionality is broken and
+* 						                    its not able to boot in QSPI/NAND
+* 						                    bootmode
+*						Fix for CR#705664 - FSBL fails to decrypt the
+*						                    bitstream when the image is AES
+*						                    encrypted using non-zero key value
+* 6.00a kc  08/30/13    Fix for CR#722979 - Provide customer-friendly
+*                                           changelogs in FSBL
+*
 * </pre>
 *
 * @note

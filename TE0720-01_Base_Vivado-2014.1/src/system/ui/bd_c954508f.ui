@@ -1,0 +1,38 @@
+{
+   guistr: "# # String gsaved with Nlview version 6.3.10  2014-03-03 bk=1.3043 VDI=34 GEI=35 GUI=JA:1.6
+#  -string -flagsOSRD
+preplace port DDR -pg 1 -y 140 -defaultsOSRD
+preplace port clk_200mhz -pg 1 -y 540 -defaultsOSRD
+preplace port I2C1_SCL_O -pg 1 -y 300 -defaultsOSRD
+preplace port I2C1_SDA_T -pg 1 -y 260 -defaultsOSRD
+preplace port I2C1_SDA_I -pg 1 -y 20 -defaultsOSRD
+preplace port resetn -pg 1 -y 560 -defaultsOSRD
+preplace port I2C1_SCL_T -pg 1 -y 320 -defaultsOSRD
+preplace port clk_100mhz -pg 1 -y 340 -defaultsOSRD
+preplace port IIC_0 -pg 1 -y 180 -defaultsOSRD
+preplace port FIXED_IO -pg 1 -y 160 -defaultsOSRD
+preplace port I2C1_SCL_I -pg 1 -y 40 -defaultsOSRD
+preplace port I2C1_SDA_O -pg 1 -y 240 -defaultsOSRD
+preplace portBus GPIO_O -pg 1 -y 120 -defaultsOSRD
+preplace inst net_gnd -pg 1 -lvl 1 -y 650 -defaultsOSRD
+preplace inst processing_system7_0 -pg 1 -lvl 1 -y 330 -defaultsOSRD
+preplace netloc processing_system7_0_DDR 1 1 1 N
+preplace netloc processing_system7_0_I2C1_SDA_O 1 1 1 N
+preplace netloc processing_system7_0_GPIO_O 1 1 1 N
+preplace netloc processing_system7_0_I2C1_SCL_T 1 1 1 N
+preplace netloc net_gnd_const 1 1 1 520
+preplace netloc I2C1_SCL_I_1 1 0 2 NJ 40 530
+preplace netloc processing_system7_0_FCLK_RESET0_N 1 1 1 N
+preplace netloc processing_system7_0_IIC_0 1 1 1 N
+preplace netloc processing_system7_0_I2C1_SDA_T 1 1 1 N
+preplace netloc processing_system7_0_FIXED_IO 1 1 1 N
+preplace netloc processing_system7_0_I2C1_SCL_O 1 1 1 N
+preplace netloc I2C1_SDA_I_1 1 0 2 NJ 50 520
+preplace netloc processing_system7_0_FCLK_CLK0 1 0 2 140 30 540
+preplace netloc processing_system7_0_FCLK_CLK1 1 1 1 N
+levelinfo -pg 1 110 330 560
+",
+}
+{
+   da_ps7_cnt: "1",
+}

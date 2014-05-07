@@ -1,0 +1,78 @@
+{
+   guistr: "# # String gsaved with Nlview version 6.3.10  2014-03-03 bk=1.3043 VDI=34 GEI=35 GUI=JA:1.6
+#  -string -flagsOSRD
+preplace port DDR -pg 1 -y 100 -defaultsOSRD
+preplace port cpld_x0 -pg 1 -y 290 -defaultsOSRD
+preplace port HDMI_DE -pg 1 -y 580 -defaultsOSRD
+preplace port cpld_x1 -pg 1 -y 180 -defaultsOSRD
+preplace port HDMI_VS -pg 1 -y 560 -defaultsOSRD
+preplace port HDMI -pg 1 -y 140 -defaultsOSRD
+preplace port cpld_x5 -pg 1 -y 620 -defaultsOSRD
+preplace port FIXED_IO -pg 1 -y 120 -defaultsOSRD
+preplace port cpld_x7 -pg 1 -y 230 -defaultsOSRD
+preplace port HDMI_HS -pg 1 -y 540 -defaultsOSRD
+preplace port HDMI_CLK -pg 1 -y 520 -defaultsOSRD
+preplace portBus cec_clk -pg 1 -y 620 -defaultsOSRD
+preplace portBus HDMI_D -pg 1 -y 600 -defaultsOSRD
+preplace portBus ls_oe -pg 1 -y 660 -defaultsOSRD
+preplace portBus ct_hpd -pg 1 -y 640 -defaultsOSRD
+preplace inst Video|proc_sys_reset_1 -pg 1 -lvl 1 -y 740 -defaultsOSRD
+preplace inst Video|v_axi4s_vid_out_0 -pg 1 -lvl 3 -y 670 -defaultsOSRD
+preplace inst Video|v_tpg_0 -pg 1 -lvl 2 -y 760 -defaultsOSRD
+preplace inst Video -pg 1 -lvl 2 -y 590 -regy -90 -defaultsOSRD
+preplace inst I2C1 -pg 1 -lvl 2 -y 220 -defaultsOSRD
+preplace inst net_gnd -pg 1 -lvl 2 -y 420 -defaultsOSRD
+preplace inst Video|v_tc_1 -pg 1 -lvl 2 -y 620 -defaultsOSRD
+preplace inst Video|net_vcc_0 -pg 1 -lvl 4 -y 990 -defaultsOSRD
+preplace inst Video|net_gnd_0 -pg 1 -lvl 4 -y 880 -defaultsOSRD
+preplace inst Video|selectio_wiz_0 -pg 1 -lvl 4 -y 630 -defaultsOSRD
+preplace inst processing_system7_0 -pg 1 -lvl 1 -y 310 -defaultsOSRD
+preplace netloc processing_system7_0_DDR 1 1 2 580 340 NJ
+preplace netloc Video_HDMI_HS 1 2 1 2160
+preplace netloc processing_system7_0_FCLK_CLK3 1 1 1 590
+preplace netloc Video|v_tpg_0_video_out 1 2 1 1300
+preplace netloc Video|v_tc_1_vtiming_out 1 2 1 N
+preplace netloc processing_system7_0_I2C1_SDA_O 1 1 1 570
+preplace netloc processing_system7_0_GPIO_O 1 1 1 600
+preplace netloc processing_system7_0_I2C1_SCL_T 1 1 1 520
+preplace netloc Video|v_axi4s_vid_out_0_vid_hsync 1 3 2 NJ 710 NJ
+preplace netloc net_gnd_const 1 1 2 490 370 2150
+preplace netloc Video|net_gnd_0_const 1 2 3 1340 830 NJ 830 1990
+preplace netloc Video|slowest_sync_clk_1 1 0 5 720 650 1050 510 1330 540 1620 540 NJ
+preplace netloc Video_HDMI_CLK 1 2 1 2150
+preplace netloc cpld_x5_1 1 0 2 100 10 NJ
+preplace netloc I2C1_Res1 1 2 1 N
+preplace netloc processing_system7_0_FCLK_RESET0_N 1 1 1 550
+preplace netloc processing_system7_0_IIC_0 1 1 2 510 360 NJ
+preplace netloc Video_ct_hpd 1 2 1 2210
+preplace netloc I2C1_SDA_I 1 1 2 540 330 2150
+preplace netloc I2C1_Res2 1 2 1 2200
+preplace netloc Video|v_axi4s_vid_out_0_vid_data 1 3 1 N
+preplace netloc Video_cec_clk 1 2 1 2200
+preplace netloc processing_system7_0_I2C1_SDA_T 1 1 1 560
+preplace netloc Video_HDMI_DE 1 2 1 2180
+preplace netloc Video|selectio_wiz_0_data_out_to_pins 1 4 1 N
+preplace netloc Video|proc_sys_reset_1_peripheral_reset 1 1 3 NJ 840 1320 810 NJ
+preplace netloc Video|net_vcc_0_const 1 1 4 1070 520 1290 940 NJ 940 2010
+preplace netloc processing_system7_0_FIXED_IO 1 1 2 550 350 NJ
+preplace netloc Video_ls_oe 1 2 1 2220
+preplace netloc Video|ext_reset_in1_1 1 0 1 N
+preplace netloc Video_HDMI_VS 1 2 1 2170
+preplace netloc I2C1_SCL_I 1 1 2 500 320 2160
+preplace netloc processing_system7_0_FCLK_CLK0 1 0 2 110 620 510
+preplace netloc processing_system7_0_I2C1_SCL_O 1 1 1 530
+preplace netloc Video|v_axi4s_vid_out_0_vtg_ce 1 1 3 1080 540 NJ 820 1600
+preplace netloc Video|proc_sys_reset_0_peripheral_aresetn 1 1 2 1060 530 NJ
+preplace netloc Video_HDMI_D 1 2 1 2190
+preplace netloc I2C1_cpld_x0 1 2 1 2200
+preplace netloc Video|v_axi4s_vid_out_0_vid_active_video 1 3 2 NJ 560 NJ
+preplace netloc Video|v_axi4s_vid_out_0_vid_vsync 1 3 2 NJ 720 NJ
+levelinfo -pg 1 80 300 1370 2240
+levelinfo -hier Video 700 880 1180 1470 1810 2030
+",
+}
+{
+   da_axi4_cnt: "4",
+   da_board_cnt: "3",
+   da_ps7_cnt: "1",
+}

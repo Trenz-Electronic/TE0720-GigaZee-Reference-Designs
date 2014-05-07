@@ -1,0 +1,35 @@
+{
+   guistr: "# # String gsaved with Nlview version 6.3.10  2014-03-03 bk=1.3043 VDI=34 GEI=35 GUI=JA:1.6
+#  -string -flagsOSRD
+preplace port cpld_x0 -pg 1 -y 50 -defaultsOSRD
+preplace port cpld_x1 -pg 1 -y 150 -defaultsOSRD
+preplace port SDA_I -pg 1 -y 220 -defaultsOSRD
+preplace port cpld_x5 -pg 1 -y 220 -defaultsOSRD
+preplace port cpld_x7 -pg 1 -y 280 -defaultsOSRD
+preplace port SCL_I -pg 1 -y 130 -defaultsOSRD
+preplace portBus SDA_T -pg 1 -y 290 -defaultsOSRD
+preplace portBus SCL_O -pg 1 -y 140 -defaultsOSRD
+preplace portBus SCL_T -pg 1 -y 160 -defaultsOSRD
+preplace portBus GPIO_O -pg 1 -y 50 -defaultsOSRD
+preplace portBus SDA_O -pg 1 -y 270 -defaultsOSRD
+preplace inst xlconcat_0 -pg 1 -lvl 1 -y 280 -defaultsOSRD
+preplace inst xlconcat_1 -pg 1 -lvl 1 -y 150 -defaultsOSRD
+preplace inst not_0 -pg 1 -lvl 1 -y 50 -defaultsOSRD
+preplace inst or_0 -pg 1 -lvl 2 -y 150 -defaultsOSRD
+preplace inst or_1 -pg 1 -lvl 2 -y 280 -defaultsOSRD
+preplace inst or_2 -pg 1 -lvl 2 -y 50 -defaultsOSRD
+preplace netloc In1_2 1 0 1 N
+preplace netloc not_0_Res 1 1 1 N
+preplace netloc Op1_1 1 0 1 N
+preplace netloc cpld_x5_1 1 0 3 NJ 220 NJ 220 N
+preplace netloc xlconcat_1_dout 1 1 1 N
+preplace netloc In0_1 1 0 1 N
+preplace netloc or_1_Res 1 2 1 N
+preplace netloc In0_2 1 0 1 N
+preplace netloc or_0_Res 1 2 1 510
+preplace netloc xlconcat_0_dout 1 1 1 N
+preplace netloc or_2_Res 1 2 1 N
+preplace netloc In1_1 1 0 1 N
+levelinfo -pg 1 120 240 420 530
+",
+}

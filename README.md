@@ -1,3 +1,8 @@
+Notice: This archive is obsolete, please use only latest desings available under
+http://www.trenz-electronic.de/de/download/d0/Trenz_Electronic/d1/TE0720-GigaZee.html
+
+This repository will be deleted in future!
+
 Copyright (C) 2013 Trenz Electronic GmbH
 
 Permission is hereby granted, free of charge, to any person obtaining a 
